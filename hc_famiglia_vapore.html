@@ -817,4 +817,9 @@ function toggleScheda(id, btn) {
   const isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
   icon.classList.toggle('open', !isOpen);
-  btn.querySelector('span:f
+  btn.querySelector('span:first-child').textContent = isOpen ? '📖 Apri scheda formazione completa' : '📕 Chiudi scheda';
+  if (!isOpen) setTimeout(() => body.scrollIntoView({behavior: 'smooth', block: 'nearest'}), 50);
+}
+</script>
+</body>
+</html>
