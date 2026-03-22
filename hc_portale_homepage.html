@@ -981,4 +981,46 @@ function handleSearch(v) {
   document.getElementById('count-label').textContent = visible + ' famiglie';
 }
 
-/* ── OPEN SCHEDA ─────────────
+/* ── OPEN SCHEDA ──────────────────────────── */
+const schedeMap = {
+  'inox':             'hc_inox.html',
+  'valvole-acqua':    'hc_valvole_acqua.html',
+  'vapore':           'hc_famiglia_vapore.html',
+  'gas':              'hc_valvole_gas.html',
+  'attuatori':        'hc_attuatori.html',
+  'antincendio':      'hc_antincendio.html',
+  'ottone':           'hc_ottone.html',
+  'bronzo':           'hc_bronzo.html',
+  'zincati':          'hc_zincati.html',
+  'carbonio':         'hc_carbonio.html',
+  'pvc':              'hc_pvc.html',
+  'polietilene':      'hc_polietilene.html',
+  'ppr':              'hc_ppr.html',
+  'pressare':         'hc_pressare.html',
+  /* pagine ancora da creare */
+  'polipropilene':    null,
+  'alluminio':        null,
+  'accessori-flange': null,
+  'contatori':        null,
+};
+
+function apriScheda(id) {
+  const target = schedeMap[id];
+  if (target) {
+    window.location.href = target;
+  } else {
+    const cards = document.querySelectorAll('.famiglia-card');
+    let nome = id;
+    cards.forEach(c => {
+      if (c.getAttribute('onclick') && c.getAttribute('onclick').includes("'" + id + "'")) {
+        const el = c.querySelector('.famiglia-nome, h3, [class*="nome"]');
+        if (el) nome = el.textContent.trim();
+      }
+    });
+    alert('⚠️ Scheda "' + nome + '" in costruzione.\nDisponibile a breve.');
+  }
+}
+
+</script>
+</body>
+</html>
